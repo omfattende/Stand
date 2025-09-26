@@ -1,0 +1,64 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Dashboard</h1>
+      <div class="user-info">
+        <span>Bienvenido, {{ currentUser }}</span>
+        <button class="logout-button" (click)="logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="welcome-section">
+      <h2>¡Bienvenido a Stand App!</h2>
+      <p>Has iniciado sesión correctamente en tu aplicación Angular 17.</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <div class="card-icon">📊</div>
+        <h3>Estadísticas</h3>
+        <p>Visualiza las métricas y estadísticas de tu aplicación.</p>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-icon">👥</div>
+        <h3>Usuarios</h3>
+        <p>Gestiona los usuarios y permisos del sistema.</p>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-icon">⚙️</div>
+        <h3>Configuración</h3>
+        <p>Configura las opciones y preferencias de la aplicación.</p>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-icon">📈</div>
+        <h3>Reportes</h3>
+        <p>Genera y visualiza reportes detallados.</p>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h3>Información del Sistema</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>Usuario:</strong> {{ currentUser }}
+        </div>
+        <div class="info-item">
+          <strong>Estado:</strong> Autenticado
+        </div>
+        <div class="info-item">
+          <strong>Framework:</strong> Angular 17
+        </div>
+        <div class="info-item">
+          <strong>Versión:</strong> 17.3.0
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
