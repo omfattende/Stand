@@ -1,64 +1,61 @@
-<div class="dashboard-container">
+<div class="dashboard-container" *ngIf="currentUser">
   <header class="dashboard-header">
-    <div class="header-content">
-      <h1>Dashboard</h1>
-      <div class="user-info">
-        <span>Bienvenido, {{ currentUser }}</span>
-        <button class="logout-button" (click)="logout()">
-          Cerrar Sesión
-        </button>
+    <h1>Bienvenido al Dashboard</h1>
+    <div class="user-info">
+      <div class="user-details">
+        <h2>{{ getUserName() }}</h2>
+        <p>{{ getUserEmail() }}</p>
+        <span class="user-role">{{ getUserRole() }}</span>
       </div>
+      <button (click)="logout()" class="logout-btn">Cerrar Sesión</button>
     </div>
   </header>
 
-  <main class="dashboard-main">
-    <div class="welcome-section">
-      <h2>¡Bienvenido a Stand App!</h2>
-      <p>Has iniciado sesión correctamente en tu aplicación Angular 17.</p>
-    </div>
-
-    <div class="dashboard-grid">
-      <div class="dashboard-card">
-        <div class="card-icon">📊</div>
-        <h3>Estadísticas</h3>
-        <p>Visualiza las métricas y estadísticas de tu aplicación.</p>
-      </div>
-
-      <div class="dashboard-card">
-        <div class="card-icon">👥</div>
-        <h3>Usuarios</h3>
-        <p>Gestiona los usuarios y permisos del sistema.</p>
-      </div>
-
-      <div class="dashboard-card">
-        <div class="card-icon">⚙️</div>
-        <h3>Configuración</h3>
-        <p>Configura las opciones y preferencias de la aplicación.</p>
-      </div>
-
-      <div class="dashboard-card">
-        <div class="card-icon">📈</div>
-        <h3>Reportes</h3>
-        <p>Genera y visualiza reportes detallados.</p>
+  <main class="dashboard-content">
+    <!-- Contenido para administradores -->
+    <div *ngIf="isAdmin()" class="admin-section">
+      <h3>Panel de Administrador</h3>
+      <div class="admin-actions">
+        <button class="action-btn">Gestionar Usuarios</button>
+        <button class="action-btn">Configuración</button>
+        <button class="action-btn">Reportes</button>
       </div>
     </div>
 
-    <div class="info-section">
-      <h3>Información del Sistema</h3>
-      <div class="info-grid">
-        <div class="info-item">
-          <strong>Usuario:</strong> {{ currentUser }}
+    <!-- Contenido para todos los usuarios -->
+    <div class="user-section">
+      <h3>Mi Panel</h3>
+      <div class="user-actions">
+        <button class="action-btn">Mi Perfil</button>
+        <button class="action-btn">Mis Actividades</button>
+        <button class="action-btn">Configuración</button>
+      </div>
+    </div>
+
+    <!-- Información del usuario -->
+    <div class="user-data">
+      <h4>Información de tu cuenta:</h4>
+      <div class="data-grid">
+        <div class="data-item">
+          <strong>Nombre:</strong> {{ currentUser.name }}
         </div>
-        <div class="info-item">
-          <strong>Estado:</strong> Autenticado
+        <div class="data-item">
+          <strong>Email:</strong> {{ currentUser.email }}
         </div>
-        <div class="info-item">
-          <strong>Framework:</strong> Angular 17
+        <div class="data-item">
+          <strong>Roles:</strong> {{ currentUser.roles.join(', ') }}
         </div>
-        <div class="info-item">
-          <strong>Versión:</strong> 17.3.0
+        <div *ngIf="currentUser.department" class="data-item">
+          <strong>Departamento:</strong> {{ currentUser.department }}
+        </div>
+        <div *ngIf="currentUser.avatar" class="data-item">
+          <strong>Avatar:</strong> {{ currentUser.avatar }}
         </div>
       </div>
     </div>
   </main>
+</div>
+
+<div *ngIf="!currentUser" class="loading">
+  <p>Cargando...</p>
 </div>

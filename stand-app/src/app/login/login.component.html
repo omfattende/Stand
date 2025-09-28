@@ -14,7 +14,7 @@
           formControlName="email"
           class="form-control"
           [class.error]="getFieldError('email')"
-          placeholder="tu@email.com"
+          placeholder="admin@stand.com"
         />
         <div class="error-message" *ngIf="getFieldError('email')">
           {{ getFieldError('email') }}
@@ -29,7 +29,7 @@
           formControlName="password"
           class="form-control"
           [class.error]="getFieldError('password')"
-          placeholder="Tu contraseña"
+          placeholder="123456"
         />
         <div class="error-message" *ngIf="getFieldError('password')">
           {{ getFieldError('password') }}
@@ -52,9 +52,22 @@
     </form>
 
     <div class="login-info">
-      <p><strong>Credenciales de prueba:</strong></p>
-      <p>Email: {{ cuenta }}</p>
-      <p>Contraseña: 123456</p>
+      <p><strong>Cuentas permitidas:</strong></p>
+      <div class="account-list">
+        <div *ngFor="let account of allowedAccounts" class="account-item">
+          <p>
+            <strong>{{ account.type }}:</strong><br>
+            Email: {{ account.email }}<br>
+            Contraseña: {{ account.password }}
+          </p>
+          <button 
+            type="button" 
+            class="fill-btn"
+            (click)="fillForm(account)">
+            Usar esta cuenta
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

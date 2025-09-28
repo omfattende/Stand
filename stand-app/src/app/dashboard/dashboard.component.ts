@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService,User } from '../auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +11,7 @@ import { AuthService } from '../auth.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  currentUser: string | null = null;
+  currentUser: User | null = null; // Cambia string por User | null
 
   constructor(
     private authService: AuthService,
@@ -31,4 +31,22 @@ export class DashboardComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  // Métodos útiles para el template
+  getUserName(): string {
+    return this.currentUser?.name || 'Usuario';
+  }
+
+  getUserEmail(): string {
+    return this.currentUser?.email || '';
+  }
+
+  getUserRole(): string {
+    return this.currentUser?.roles[0] || 'user';
+  }
+
+  isAdmin(): boolean {
+    return this.authService.hasRole('admin');
+  }
+
 }

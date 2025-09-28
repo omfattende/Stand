@@ -12,10 +12,15 @@ import { AuthService } from '../auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  cuenta = 'admin@stand.com'
   loginForm: FormGroup;
   isLoading = false;
   errorMessage = '';
+
+  // Lista de cuentas permitidas para mostrar en el login
+  allowedAccounts = [
+    { email: 'admin@stand.com', password: '123456', type: 'Administrador' },
+    { email: 'sales@stand.com', password: '123456', type: 'Ventas' }
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -39,9 +44,17 @@ export class LoginComponent {
         next: (success) => {
           this.isLoading = false;
           if (success) {
-            this.router.navigate(['/dashboard']);
+            const user = this.authService.getCurrentUser();
+            console.log('Usuario autenticado:', user);
+            
+            // Redirigir basado en el rol
+            if (this.authService.isAdmin()) {
+              this.router.navigate(['/admin']);
+            } else {
+              this.router.navigate(['/sales']);
+            }
           } else {
-            this.errorMessage = 'Credenciales incorrectas. Intenta con admin@stand.com / 123456';
+            this.errorMessage = 'Credenciales incorrectas o usuario no autorizado.';
           }
         },
         error: (error) => {
@@ -76,5 +89,13 @@ export class LoginComponent {
       }
     }
     return '';
+  }
+
+  // Método para llenar el formulario con cuentas de prueba
+  fillForm(account: any): void {
+    this.loginForm.patchValue({
+      email: account.email,
+      password: account.password
+    });
   }
 }
