@@ -31,20 +31,19 @@ export class AuthService {
     { email: 'sales2@stand.com', password: '123456', role: 'sales', name: 'Vendedor 2' }
   ];
 
+
   constructor() {
     this.checkStoredAuth();
   }
-
   private checkStoredAuth(): void {
     const savedAuth = localStorage.getItem('isAuthenticated');
     const savedUser = localStorage.getItem('currentUser');
-    
     if (savedAuth === 'true' && savedUser) {
       try {
         const user: User = JSON.parse(savedUser);
         this.isAuthenticatedSubject.next(true);
         this.currentUserSubject.next(user);
-      } catch (error) {
+      } catch {
         this.clearAuthData();
       }
     }
@@ -52,13 +51,9 @@ export class AuthService {
 
   login(email: string, password: string): Observable<boolean> {
     return of(null).pipe(
-      delay(1000), // Simular delay de red
+      delay(500),
       map(() => {
-        // Buscar usuario en la lista de permitidos
-        const allowedUser = this.allowedUsers.find(user => 
-          user.email === email && user.password === password
-        );
-
+        const allowedUser = this.allowedUsers.find(u => u.email === email && u.password === password);
         if (allowedUser) {
           const user: User = {
             id: Date.now(),
@@ -127,5 +122,16 @@ export class AuthService {
       role: user.role, 
       name: user.name 
     }));
+  }
+
+  // Cantidad total de usuarios permitidos (para métricas del dashboard)
+  getAllowedUsersCount(): number {
+    return this.allowedUsers.length;
+  }
+
+  // DEMO: Recuperar contraseña por email desde la lista local (no usar en producción)
+  getPasswordForEmail(email: string): string | null {
+    const found = this.allowedUsers.find(u => u.email === email);
+    return found ? found.password : null;
   }
 }

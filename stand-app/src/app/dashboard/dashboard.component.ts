@@ -32,13 +32,24 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  // Métodos útiles para el template
-  getUserName(): string {
-    return this.currentUser?.name || 'Usuario';
+  // Datos para métricas
+  getUsersCount(): number {
+    return this.authService.getAllowedUsersCount();
   }
 
-  getUserEmail(): string {
+  getCurrentEmail(): string {
     return this.currentUser?.email || '';
+  }
+
+  // DEMO: Muestra contraseña desde lista local (no usar en producción)
+  getCurrentPassword(): string {
+    const email = this.getCurrentEmail();
+    return email ? (this.authService.getPasswordForEmail(email) || 'N/D') : 'N/D';
+  }
+
+  // Métodos útiles para el encabezado
+  getUserName(): string {
+    return this.currentUser?.name || 'Usuario';
   }
 
   getUserRole(): string {

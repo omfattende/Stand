@@ -1,36 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-</head>
-<body>
-  <div class="hero-section">
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <!-- Logo Section -->
-        <div class="logo-section">
-          <a href="#" class="logo">EIAO<span>STORE</span></a>
-        </div>
-        
-        <!-- Navigation Links -->
-        <div class="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Collection</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-          <a href="#">Web TV</a>
-          <a href="#">Mapa</a>
-          <a href="#">Galeria</a>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Hero Content -->
-    <div class="hero-content">
-      <h1>Solo para gente elegante</h1>
-      <a href="#" class="cta-button">Comprar</a>
+<!-- Navbar only -->
+<nav class="navbar" [class.not-home]="!isHome" #navbarEl>
+  <div class="nav-container">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <a href="#" class="logo" (click)="nav.toHome(); $event.preventDefault()">EIAO<span>STORE</span></a>
+    </div>
+    
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a href="#" (click)="nav.toHome(); $event.preventDefault()">Home</a>
+      <a href="#" (click)="nav.toCollection(); $event.preventDefault()">Collection</a>
+      <a href="#" (click)="nav.toAbout(); $event.preventDefault()">About</a>
+      <a href="#" (click)="nav.toContact(); $event.preventDefault()">Contact</a>
+      <a href="#" (click)="nav.toWebTv(); $event.preventDefault()">Web TV</a>
+      <a href="#" (click)="nav.toMapa(); $event.preventDefault()">Mapa</a>
+      <a href="#" (click)="nav.toGaleria(); $event.preventDefault()">Galeria</a>
     </div>
   </div>
-</body>
-</html>
+  
+</nav>
+<!-- Spacer to offset fixed navbar on non-home pages -->
+<div class="nav-spacer" *ngIf="!isHome" [style.height.px]="navHeight"></div>

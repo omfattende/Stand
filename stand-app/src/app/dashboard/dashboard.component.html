@@ -4,7 +4,7 @@
     <div class="user-info">
       <div class="user-details">
         <h2>{{ getUserName() }}</h2>
-        <p>{{ getUserEmail() }}</p>
+        <p>{{ getCurrentEmail() }}</p>
         <span class="user-role">{{ getUserRole() }}</span>
       </div>
       <button (click)="logout()" class="logout-btn">Cerrar Sesión</button>
@@ -12,47 +12,41 @@
   </header>
 
   <main class="dashboard-content">
-    <!-- Contenido para administradores -->
-    <div *ngIf="isAdmin()" class="admin-section">
-      <h3>Panel de Administrador</h3>
-      <div class="admin-actions">
-        <button class="action-btn">Gestionar Usuarios</button>
-        <button class="action-btn">Configuración</button>
-        <button class="action-btn">Reportes</button>
+    <!-- Métricas principales -->
+    <section class="metrics">
+      <div class="card">
+        <h3>Usuarios</h3>
+        <p class="value">{{ getUsersCount() }}</p>
+        <span class="hint">Total de usuarios permitidos</span>
       </div>
-    </div>
+      <div class="card">
+        <h3>Gmail</h3>
+        <p class="value">{{ getCurrentEmail() }}</p>
+        <span class="hint">Correo de la sesión actual</span>
+      </div>
+      <div class="card warning">
+        <h3>Contraseña</h3>
+        <p class="value">{{ getCurrentPassword() }}</p>
+        <span class="hint">Correo de la sesión actual</span>
+      </div>
+    </section>
 
-    <!-- Contenido para todos los usuarios -->
-    <div class="user-section">
-      <h3>Mi Panel</h3>
-      <div class="user-actions">
-        <button class="action-btn">Mi Perfil</button>
-        <button class="action-btn">Mis Actividades</button>
-        <button class="action-btn">Configuración</button>
+    <!-- Productos (próximamente) -->
+    <section class="productos">
+      <div class="productos-header">
+        <h3>Productos</h3>
+        <span class="badge">Mañana le sigo</span>
       </div>
-    </div>
-
-    <!-- Información del usuario -->
-    <div class="user-data">
-      <h4>Información de tu cuenta:</h4>
-      <div class="data-grid">
-        <div class="data-item">
-          <strong>Nombre:</strong> {{ currentUser.name }}
-        </div>
-        <div class="data-item">
-          <strong>Email:</strong> {{ currentUser.email }}
-        </div>
-        <div class="data-item">
-          <strong>Roles:</strong> {{ currentUser.roles.join(', ') }}
-        </div>
-        <div *ngIf="currentUser.department" class="data-item">
-          <strong>Departamento:</strong> {{ currentUser.department }}
-        </div>
-        <div *ngIf="currentUser.avatar" class="data-item">
-          <strong>Avatar:</strong> {{ currentUser.avatar }}
+      <div class="productos-grid">
+        <div class="prod-card placeholder" *ngFor="let n of [1,2,3,4]">
+          <div class="thumb"></div>
+          <div class="lines">
+            <span class="line"></span>
+            <span class="line small"></span>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 </div>
 
