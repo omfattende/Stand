@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -16,11 +16,11 @@ export class LoginComponent {
   isLoading = false;
   errorMessage = '';
 
-  // Lista de cuentas permitidas para mostrar en el login
-  allowedAccounts = [
-    { email: 'admin@stand.com', password: '123456', type: 'Administrador' },
-    { email: 'sales@stand.com', password: '123456', type: 'Ventas' }
-  ];
+  // Cuenta de admin para mostrar en el login
+  adminAccount = { email: 'admin@stand.com', password: '123456', type: 'Administrador' };
+  
+  // Cuenta cliente predeterminada
+  clientAccount = { email: 'cliente@stand.com', password: '123456', type: 'Cliente Demo' };
 
   constructor(
     private fb: FormBuilder,
@@ -51,7 +51,8 @@ export class LoginComponent {
             if (this.authService.isAdmin()) {
               this.router.navigate(['/admin']);
             } else {
-              this.router.navigate(['/sales']);
+              // Clientes van a home
+              this.router.navigate(['/home']);
             }
           } else {
             this.errorMessage = 'Credenciales incorrectas o usuario no autorizado.';

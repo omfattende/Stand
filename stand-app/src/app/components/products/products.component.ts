@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ProductsService, Product } from '../../services/products.service';
 import { AuthService } from '../../auth.service';
 
 @Component({
-  selector: 'app-collection',
+  selector: 'app-products',
   standalone: true,
-  imports: [NgFor],
-  templateUrl: './collection.component.html',
-  styleUrls: ['./collection.component.css']
+  imports: [CommonModule],
+  templateUrl: './products.component.html',
+  styleUrl: './products.component.css'
 })
-export class CollectionComponent implements OnInit {
+export class ProductsComponent implements OnInit {
   products: Product[] = [];
 
   constructor(
@@ -29,6 +29,10 @@ export class CollectionComponent implements OnInit {
     // Registrar el clic
     this.productsService.trackClick(product.id, userEmail);
     
-    console.log(`✅ Clic registrado: ${product.name} por ${userEmail}`);
+    // Mostrar notificación
+    console.log(`Clic registrado en ${product.name} por ${userEmail}`);
+    
+    // Aquí podrías agregar lógica adicional como abrir un modal con detalles
+    alert(`Has clickeado en: ${product.name}\n${product.description}\nPrecio: $${product.price}`);
   }
 }

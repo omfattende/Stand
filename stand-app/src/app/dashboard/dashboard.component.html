@@ -7,7 +7,9 @@
         <p>{{ getCurrentEmail() }}</p>
         <span class="user-role">{{ getUserRole() }}</span>
       </div>
-      <button (click)="logout()" class="logout-btn">Cerrar Sesión</button>
+      <div class="actions">
+        <button (click)="logout()" class="logout-btn">Cerrar Sesión</button>
+      </div>
     </div>
   </header>
 
@@ -30,24 +32,37 @@
         <span class="hint">Correo de la sesión actual</span>
       </div>
     </section>
-
-    <!-- Productos (próximamente) -->
-    <section class="productos">
-      <div class="productos-header">
-        <h3>Productos</h3>
-        <span class="badge">Mañana le sigo</span>
-      </div>
-      <div class="productos-grid">
-        <div class="prod-card placeholder" *ngFor="let n of [1,2,3,4]">
-          <div class="thumb"></div>
-          <div class="lines">
-            <span class="line"></span>
-            <span class="line small"></span>
-          </div>
-        </div>
-      </div>
+    <hr>
+    <!-- Estadísticas de ventas -->
+    <section class="sales-section">
+      <app-sales-stats></app-sales-stats>
+    </section>
+    <hr>
+    <!-- Gráfica de clics en productos -->
+    <section class="product-stats">
+      <app-product-chart></app-product-chart>
     </section>
   </main>
+  <hr>
+  <!-- Gestión de usuarios (solo admin) -->
+  <section class="admin-users" *ngIf="isAdmin()">
+    <h3>Gestión de Usuarios</h3>
+    <div class="users-list">
+      <div class="user-row" *ngFor="let u of getAllowedUsers()">
+        <div class="info">
+          <strong>{{ u.name }}</strong>
+          <span>{{ u.email }}</span>
+          <span class="role">{{ u.role }}</span>
+        </div>
+        <button 
+          *ngIf="!(u.email === getCurrentEmail() && isAdmin())"
+          class="delete-btn" 
+          (click)="deleteUser(u.email)">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </section>
 </div>
 
 <div *ngIf="!currentUser" class="loading">

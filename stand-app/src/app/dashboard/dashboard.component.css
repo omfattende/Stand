@@ -15,10 +15,21 @@
 .user-details h2 { margin: 0; }
 .user-role { font-size: .85rem; opacity: .8; }
 
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .logout-btn {
   background: #e74c3c; color: #fff; border: none; padding: .6rem 1rem; border-radius: 8px; cursor: pointer;
 }
 .logout-btn:hover { background: #c0392b; }
+
+.delete-btn {
+  background: #ff6b6b; color: #fff; border: none; padding: .6rem 1rem; border-radius: 8px; cursor: pointer;
+  font-size: 0.9rem;
+}
+.delete-btn:hover { background: #ff5252; }
 
 .metrics {
   display: grid;
@@ -36,15 +47,76 @@
 .card.warning { border-color: rgba(231, 76, 60, .5); }
 .card.warning .value { color: #e74c3c; }
 
-.productos { margin-top: 1rem; }
-.productos-header { display: flex; align-items: center; gap: .5rem; margin-bottom: .75rem; }
-.badge { background: #ffffff15; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: .1rem .5rem; font-size: .75rem; }
+.sales-section {
+  margin-top: 2rem;
+}
 
-.productos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-.prod-card.placeholder { display: flex; gap: .75rem; align-items: center; background: #ffffff08; border: 1px dashed rgba(255,255,255,.25); border-radius: 12px; padding: .75rem; }
-.thumb { width: 64px; height: 64px; background: #ffffff15; border-radius: 8px; }
-.lines { flex: 1; display: grid; gap: .5rem; }
-.line { display: block; height: 10px; background: #ffffff15; border-radius: 6px; }
-.line.small { width: 60%; }
+.product-stats {
+  margin-top: 2rem;
+}
 
 .loading { padding: 140px 2rem; text-align: center; }
+
+/* Gestión de usuarios */
+.admin-users {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #ffffff10;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.admin-users h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.user-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-row .info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.user-row .info strong {
+  font-size: 1rem;
+}
+
+.user-row .info span {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.user-row .info .role {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}

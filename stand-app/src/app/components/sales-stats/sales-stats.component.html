@@ -1,0 +1,44 @@
+<div class="sales-stats-container">
+  <h3>💰 Estadísticas de Ventas</h3>
+
+  <!-- Métricas principales -->
+  <div class="metrics-grid">
+    <div class="metric-card revenue">
+      <div class="metric-icon">💵</div>
+      <div class="metric-info">
+        <span class="metric-label">Total Recaudado</span>
+        <span class="metric-value">${{ totalRevenue.toFixed(2) }}</span>
+      </div>
+    </div>
+
+    <div class="metric-card clicks">
+      <div class="metric-icon">🛒</div>
+      <div class="metric-info">
+        <span class="metric-label">Total de Compras</span>
+        <span class="metric-value">{{ totalClicks }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla de usuarios -->
+  <div class="users-table" *ngIf="userStats.length > 0">
+    <h4>Compras por Usuario</h4>
+    <div class="table-header">
+      <span class="col-email">Usuario</span>
+      <span class="col-clicks">Compras</span>
+      <span class="col-spent">Gastado</span>
+    </div>
+    <div class="table-body">
+      <div class="table-row" *ngFor="let user of userStats">
+        <span class="col-email">{{ user.email }}</span>
+        <span class="col-clicks">{{ user.clicks }}</span>
+        <span class="col-spent">${{ user.spent.toFixed(2) }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-data" *ngIf="userStats.length === 0">
+    <p>📊 No hay compras registradas todavía</p>
+    <p class="hint">Los clics en productos aparecerán aquí</p>
+  </div>
+</div>

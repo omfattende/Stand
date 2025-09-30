@@ -1,0 +1,23 @@
+<div class="products-container">
+  <h2 class="products-title">Nuestros Productos</h2>
+  <p class="products-subtitle">Explora nuestra colección de productos premium</p>
+  
+  <div class="products-grid">
+    <div 
+      *ngFor="let product of products" 
+      class="product-card"
+      (click)="onProductClick(product)"
+    >
+      <div class="product-icon">{{ product.image }}</div>
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-category">{{ product.category }}</p>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-footer">
+          <span class="product-price">${{ product.price }}</span>
+          <button class="product-btn">Ver más</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,7 @@ export class AppComponent {
   title = 'stand-app';
   showHeader$: Observable<boolean>;
 
-  private hideOnRoutes = ['/login', '/admin'];
+  private hideOnRoutes = ['/login', '/register', '/admin'];
 
   constructor(private router: Router) {
     this.showHeader$ = this.router.events.pipe(
