@@ -15,6 +15,7 @@ import { AuthService } from '../../auth.service';
 export class HeaderComponent implements AfterViewInit {
   isHome = false;
   navHeight = 0;
+  menuOpen = false;
   @ViewChild('navbarEl') navbarEl!: ElementRef<HTMLElement>;
 
   constructor(public nav: NavigationService, private router: Router, private auth: AuthService) {
@@ -24,6 +25,7 @@ export class HeaderComponent implements AfterViewInit {
     ).subscribe((e: any) => {
       const url: string = e.url || '';
       this.isHome = url.startsWith('/home') || url === '/';
+      this.menuOpen = false; // Close menu on route change
       // Recalculate on route change (layout may shift)
       setTimeout(() => this.updateNavHeight());
     });
@@ -67,5 +69,13 @@ export class HeaderComponent implements AfterViewInit {
     if (removed) {
       this.router.navigate(['/login']);
     }
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
   }
 }

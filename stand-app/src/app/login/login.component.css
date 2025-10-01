@@ -212,3 +212,41 @@
   color: #000000;
   text-decoration: underline;
 }
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 15px;
+  }
+
+  .login-card {
+    padding: 20px;
+  }
+
+  .login-header h1 {
+    font-size: 20px;
+  }
+
+  .login-header p {
+    font-size: 13px;
+  }
+
+  .form-control {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .login-button {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .quick-access {
+    padding: 12px;
+  }
+
+  .quick-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}

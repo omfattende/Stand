@@ -6,18 +6,25 @@
       <a href="#" class="logo" (click)="nav.toHome(); $event.preventDefault()">EIAO<span>STORE</span></a>
     </div>
     
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger" [class.active]="menuOpen" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
     <!-- Navigation Links -->
-    <div class="nav-links">
-      <a href="#" (click)="nav.toHome(); $event.preventDefault()">Home</a>
-      <a href="#" (click)="nav.toCollection(); $event.preventDefault()">Collection</a>
-      <a href="#" (click)="nav.toAbout(); $event.preventDefault()">About</a>
-      <a href="#" (click)="nav.toContact(); $event.preventDefault()">Contact</a>
-      <a href="#" (click)="nav.toWebTv(); $event.preventDefault()">Web TV</a>
-      <a href="#" (click)="nav.toMapa(); $event.preventDefault()">Mapa</a>
-      <a href="#" (click)="nav.toGaleria(); $event.preventDefault()">Galeria</a>
+    <div class="nav-links" [class.active]="menuOpen">
+      <a href="#" (click)="nav.toHome(); closeMenu(); $event.preventDefault()">Home</a>
+      <a href="#" (click)="nav.toCollection(); closeMenu(); $event.preventDefault()">Collection</a>
+      <a href="#" (click)="nav.toAbout(); closeMenu(); $event.preventDefault()">About</a>
+      <a href="#" (click)="nav.toContact(); closeMenu(); $event.preventDefault()">Contact</a>
+      <a href="#" (click)="nav.toWebTv(); closeMenu(); $event.preventDefault()">Web TV</a>
+      <a href="#" (click)="nav.toMapa(); closeMenu(); $event.preventDefault()">Mapa</a>
+      <a href="#" (click)="nav.toGaleria(); closeMenu(); $event.preventDefault()">Galeria</a>
       <ng-container *ngIf="isAuthenticated">
-        <a href="#" (click)="logout(); $event.preventDefault()">Cerrar sesión</a>
-        <a href="#" (click)="deleteMyAccount(); $event.preventDefault()">Eliminar cuenta</a>
+        <a href="#" (click)="logout(); closeMenu(); $event.preventDefault()">Cerrar sesión</a>
+        <a href="#" (click)="deleteMyAccount(); closeMenu(); $event.preventDefault()">Eliminar cuenta</a>
       </ng-container>
     </div>
   </div>

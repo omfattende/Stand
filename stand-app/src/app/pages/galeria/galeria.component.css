@@ -27,3 +27,42 @@
     height: auto;
     display: block;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page {
+        padding: 80px 1rem 1rem;
+    }
+
+    .masonry {
+        columns: 2 200px;
+        column-gap: 0.75rem;
+    }
+
+    .item {
+        margin-bottom: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page {
+        padding: 70px 0.75rem 0.75rem;
+    }
+
+    .header h2 {
+        font-size: 1.5rem;
+    }
+
+    .header p {
+        font-size: 0.9rem;
+    }
+
+    .masonry {
+        columns: 1 100%;
+        column-gap: 0;
+    }
+
+    .item {
+        margin-bottom: 0.5rem;
+    }
+}
