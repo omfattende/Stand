@@ -31,67 +31,51 @@ export class ProductsService {
     {
       id: 1,
       name: 'Playera de la EIAO (Edicion 2025)',
-      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra',
+      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra con nuevo diseño.',
       price: 500,
-      image: '📱',
+      image: '../../../assets/imagenes/Playeras/WhatsApp Image 2025-09-30 at 11.35.23 PM (1).jpeg',
       category: 'Playeras'
     },
     {
       id: 2,
       name: 'Playera de la EIAO (Edicion 2024)',
-      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra',
+      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra con nuevo diseño.',
       price: 500,
-      image: '💻',
+      image: '../../../assets/imagenes/Playeras/WhatsApp Image 2025-09-30 at 11.35.23 PM (2).jpeg',
       category: 'Playeras'
     },
     {
       id: 3,
       name: 'Playera de la EIAO (Edicion 2023)',
-      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra',
+      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra con nuevo diseño.',
       price: 500,
-      image: '🎧',
+      image: '../../../assets/imagenes/Playeras/WhatsApp Image 2025-09-30 at 11.35.23 PM (3).jpeg',
       category: 'Playeras'
     },
     {
       id: 4,
       name: 'Playera de la EIAO (Edicion 2023)',
-      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra',
+      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra con nuevo diseño.',
       price: 500,
-      image: '⌚',
+      image: '../../../assets/imagenes/Playeras/WhatsApp Image 2025-09-30 at 11.35.23 PM (4).jpeg',
       category: 'Playeras'
     },
     {
       id: 5,
-      name: 'Colgante de la EIAO (Edicion 2025)',
-      description: 'Colgante moderno para nuestros gafetes',
-      price: 75,
-      image: '📲',
-      category: 'Gafete'
+      name: 'Playera de la EIAO (Edicion 2022)',
+      description: 'Playera mas actual que tenemos. En la compra de una te llevas otra con nuevo diseño',
+      price: 500,
+      image: '../../../assets/imagenes/Playeras/WhatsApp Image 2025-09-30 at 11.35.23 PM.jpeg',
+      category: 'Playera'
     },
     {
       id: 6,
-      name: 'Colgante de la EIAO (Edicion 2024)',
+      name: 'Colgante de la EIAO (Edicion Programación Web)',
       description: 'Colgante moderno para nuestros gafetes',
       price: 50,
-      image: '📷',
+      image: '../../../assets/imagenes/Playeras/WhatsApp Image 2025-09-30 at 11.53.08 PM.jpeg',
       category: 'Colgante'
-    },
-    {
-    id: 7,
-    name: 'Colgante de la EIAO (Edicion 2023)',
-    description: 'Colgante moderno para nuestros gafetes',
-    price: 50,
-    image: '📷',
-    category: 'Colgante'
-  },
-  {
-    id: 8,
-    name: 'Colgante de la EIAO (Oficial)',
-    description: 'Colgante moderno para nuestros gafetes',
-    price: 50,
-    image: '📷',
-    category: 'Colgante'
-  }
+    }
   ];
 
   private clicks: ProductClick[] = [];

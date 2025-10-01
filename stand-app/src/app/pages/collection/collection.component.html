@@ -1,16 +1,16 @@
 <section class="page">
   <div class="hero-intro">
     <h2>Nueva Colección</h2>
-    <p>Productos premium seleccionados para gente elegante. Calidad, diseño y tecnología.</p>
+    <p>Siéntete cómodo en tu estadía en la Técnica Álvaro Obregón. Abraza tu uniforme y abraza tu pertenencia en este bachillerato.</p>
   </div>
   <div class="grid">
     <div class="card" *ngFor="let product of products" (click)="onProductClick(product)">
-      <div class="product-icon">{{ product.image }}</div>
+      <div class="product-icon"><img src="{{ product.image }}" alt="{{ product.name }}" height="200" width="200"></div>
       <h3>{{ product.name }}</h3>
       <p class="category">{{ product.category }}</p>
       <p class="description">{{ product.description }}</p>
       <p class="price">${{ product.price }}</p>
-      <button class="buy-btn">Ver detalles</button>
+      <button class="buy-btn">Comprar</button>
     </div>
   </div>
 </section>

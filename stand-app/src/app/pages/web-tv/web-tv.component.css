@@ -1,5 +1,151 @@
-.page { padding-top: 200px; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-.header { text-align: center; margin-bottom: 1.5rem; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
-.video { position: relative; padding-top: 56.25%; border-radius: 12px; overflow: hidden; background: #000; }
-.video iframe, .video img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.page {
+  padding-top: 120px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(8, 250px);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Grid positioning - Asymmetric layout with videos and images */
+.div1 { grid-area: 1 / 1 / 3 / 3; }   /* Large video - top left */
+.div2 { grid-area: 3 / 1 / 5 / 2; }   /* Tall video - middle left */
+.div3 { grid-area: 3 / 2 / 4 / 3; }   /* Small video */
+.div4 { grid-area: 1 / 3 / 3 / 5; }   /* Large video - top middle */
+.div5 { grid-area: 6 / 1 / 7 / 3; }   /* Wide video - bottom left */
+.div6 { grid-area: 1 / 5 / 4 / 6; }   /* Tall video - right */
+.div7 { grid-area: 4 / 2 / 6 / 4; }   /* Medium video */
+.div8 { grid-area: 3 / 4 / 5 / 5; }   /* Image - middle */
+.div9 { grid-area: 4 / 5 / 6 / 6; }   /* Image - right middle */
+.div10 { grid-area: 5 / 4 / 7 / 6; }  /* Wide image - bottom right */
+.div11 { grid-area: 7 / 1 / 9 / 3; }  /* Wide image - bottom left */
+.div12 { grid-area: 7 / 3 / 9 / 5; }  /* Wide image - bottom center */
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.grid-item:hover .overlay {
+  opacity: 1;
+}
+
+.grid-item img,
+.grid-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover img,
+.grid-item:hover video {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  padding: 2rem 1.5rem 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay h3 {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .parent {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 180px);
+  }
+  
+  .div1 { grid-area: 1 / 1 / 3 / 3; }
+  .div2 { grid-area: 3 / 1 / 5 / 2; }
+  .div3 { grid-area: 3 / 2 / 4 / 3; }
+  .div4 { grid-area: 1 / 3 / 3 / 4; }
+  .div5 { grid-area: 4 / 2 / 6 / 4; }
+  .div6 { grid-area: 5 / 1 / 7 / 2; }
+  .div7 { grid-area: 3 / 3 / 5 / 4; }
+  .div8 { grid-area: 6 / 2 / 8 / 3; }
+  .div9 { grid-area: 7 / 1 / 9 / 2; }
+  .div10 { grid-area: 6 / 3 / 8 / 4; }
+  .div11 { grid-area: 8 / 2 / 10 / 4; }
+  .div12 { grid-area: 9 / 1 / 11 / 2; }
+}
+
+@media (max-width: 768px) {
+  .parent {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(14, 160px);
+    gap: 0.75rem;
+  }
+  
+  .div1 { grid-area: 1 / 1 / 3 / 3; }
+  .div2 { grid-area: 3 / 1 / 5 / 2; }
+  .div3 { grid-area: 3 / 2 / 4 / 3; }
+  .div4 { grid-area: 4 / 2 / 6 / 3; }
+  .div5 { grid-area: 5 / 1 / 7 / 3; }
+  .div6 { grid-area: 7 / 1 / 9 / 2; }
+  .div7 { grid-area: 7 / 2 / 9 / 3; }
+  .div8 { grid-area: 9 / 1 / 10 / 2; }
+  .div9 { grid-area: 9 / 2 / 10 / 3; }
+  .div10 { grid-area: 10 / 1 / 12 / 3; }
+  .div11 { grid-area: 12 / 1 / 14 / 2; }
+  .div12 { grid-area: 12 / 2 / 14 / 3; }
+  
+  .header h2 {
+    font-size: 2rem;
+  }
+  
+  .overlay h3 {
+    font-size: 1rem;
+  }
+}

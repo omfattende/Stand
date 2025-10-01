@@ -1,5 +1,5 @@
 .page {
-  padding-top: 100px; /* account for fixed navbar */
+  padding-top: 20px; /* account for fixed navbar */
   max-width: 1200px;
   margin: 0 auto;
   padding-left: 2rem;
