@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd stand-app && npm install && npm run build",
+  "outputDirectory": "stand-app/dist/stand-app/browser",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
